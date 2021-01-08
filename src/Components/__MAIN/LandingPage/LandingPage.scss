@@ -1,0 +1,113 @@
+@import '../../../SCSS/Sizes';
+@import '../../../SCSS/Positions';
+@import '../../../SCSS/Compatibilities';
+@import '../../../SCSS/Animations';
+@import '../../../SCSS/Colors';
+
+.welcome{
+    @include fullSize();
+    @include flexCentered(column);
+    background-color: rgb(22, 22, 22);
+    color: white;
+    font-size: 5rem;
+    pre{
+        @include typer();
+        color: $primary;
+    }
+}
+#landing-page{
+    @include fullSize();
+    .staff-candidate{
+        @include absoluteCentered();
+        @include border-radius(50%);
+        width: 54vh;
+        height: 54vh;
+        .staff, .candidate{
+            @include transition(scale, 1s, ease);
+            @include verticalText();
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            background-color: rgb(22, 22, 22);
+            padding-top: 1rem;
+            opacity: 0;
+            cursor: pointer;
+            &:hover{
+                scale: 1.1;
+                opacity: 1;
+                p{
+                    opacity: 1;
+                }
+            }
+            p{
+                @include transition(opacity, .5s, ease);
+                margin: 0;
+                position: absolute;
+                color: rgba($color: white, $alpha: .5);
+                opacity: 0;
+                letter-spacing: -5px;
+                text-transform: uppercase;
+            }
+        }
+        .staff{
+            right: 50%;
+            border-bottom-left-radius: 99999px;
+            border-top-left-radius: 99999px;
+            transform-origin: right center;
+            padding-right: .5rem;
+            p{
+                right: .5rem;
+                font-size: 10vh;
+                font-weight: 700;
+            }
+            
+        }
+        .candidate{
+            left: 50%;
+            border-bottom-right-radius: 99999px;
+            border-top-right-radius: 99999px;
+            transform-origin: left center;
+            padding-left: .5rem;
+            p{
+                left: .5rem;
+                font-size: 6vh;
+                font-weight: 800;
+            }
+        }
+    }
+    .login{
+        @include absoluteCentered();
+        @include border-radius(50%);
+        @include flexCentered(column);
+        width: 54vh;
+        height: 54vh;
+        background-color: rgb(22, 22, 22);
+        color: white;
+        .fas{
+            color: white;
+            align-self: left;
+            cursor: pointer;
+        }
+        label{
+            font-weight: 600;
+            color: $primary
+        }
+        input{
+            @include border-radius(5px);
+            background-color: transparent;
+            border: 1px solid white;
+            margin-bottom: 1rem;
+            color: white
+        }
+        a{
+            @include border-radius(5px);
+            display: inline-block;
+            background-color: $primary;
+            border: none;
+            color: black;
+            font-weight: 700;
+            padding: .5rem 1rem;
+            text-decoration: none;
+        }
+    }
+}

@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {HashRouter as Router} from 'react-router-dom'
+import RouterWeb from './Components/__MAIN/RouterWeb/RouterWeb';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <RouterWeb/>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

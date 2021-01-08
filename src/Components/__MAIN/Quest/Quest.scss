@@ -1,0 +1,57 @@
+@import '../../../SCSS/Sizes';
+@import '../../../SCSS/Animations';
+@import '../../../SCSS/Compatibilities';
+@import '../../../SCSS/Positions';
+@import '../../../SCSS/Colors';
+.quest{
+    @include fullSize();
+    .main-logo{
+        display: none;
+    }
+    .question-block{
+        @include fullSize();
+        padding: 3rem;
+        h1{
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+        }
+        .question{
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+        }
+        a{
+            @include border-radius(5px);
+            display: inline-block;
+            margin: 1rem 3rem;
+            width: calc(50% - 6rem);
+            padding: 1rem;
+            border: 1px solid $primary;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            color: $primary;
+            font-size: 1.25rem;
+            font-weight: 700;
+            &:hover{
+                background-color: $primary;
+                color: black;
+            }
+        }
+    }
+    .results-page{
+        @include absoluteCentered();
+        @include border-radius(5px);
+        color: $primary;
+        text-decoration: none;
+        font-size: 4rem;
+        padding: 1rem 2rem;
+        &:hover{
+            background-color: $primary;
+            color: black;
+        }
+    }
+}

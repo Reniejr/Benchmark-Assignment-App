@@ -1,0 +1,64 @@
+@import '../../../SCSS/Sizes';
+@import '../../../SCSS/Compatibilities';
+@import '../../../SCSS/Positions';
+@import '../../../SCSS/Animations';
+.layout{
+    @include fullSize();
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    z-index: -1;
+    background-color: black;
+    .main-logo{
+        @include absoluteCentered();
+        width: 40vh;
+        height: 40vh;
+        &::before{
+            content: ' ';
+            @include absoluteCentered();
+            @include border-radius(50%);
+            @include circleRay(0.6s);
+            width: 115%;
+            height: 115%;
+            border: 1px solid #00ff84;
+            }
+        &::after{
+            content: ' ';
+            @include absoluteCentered();
+            @include border-radius(50%);
+            @include circleRay(0.9s);
+            width: 130%;
+            height: 130%;
+            border: 1px solid #00ff84; 
+        }
+        img{
+            @include border-radius(50%);
+            @include rotation(15s, infinite, linear);
+            width: 100%;
+        }
+    }
+    .logo-balls{
+        width: 2vh;
+        height: 2vh;
+        &::before{
+            content: ' ';
+            @include absoluteCentered();
+            @include border-radius(50%);
+            @include circleRay(0.6s);
+            width: 3vh;
+            height: 3vh;
+            border: 1px solid #00ff84;
+            }
+        img{
+            @include border-radius(50%);
+            @include rotation(2s, infinite, linear);
+            width: 100%;
+            position: absolute;
+        }
+        &:nth-of-type(2){@include logoBalls(10s, 2s);@include absolutePosition(none, none, -2vh, 10%, 0, 0);}
+        &:nth-of-type(3){@include logoBalls(3s, 5s);@include absolutePosition(none, none, -2vh, 27%, 0, 0);}
+        &:nth-of-type(4){@include logoBalls(7s, 3s);@include absolutePosition(none, none, -2vh, 50%, 0, 0);}
+        &:nth-of-type(5){@include logoBalls(4s, 6s);@include absolutePosition(none, 27%, -2vh, none, 0, 0);}
+        &:nth-of-type(6){@include logoBalls(12s, 1s);@include absolutePosition(none, 10%, -2vh, none, 0, 0);}
+    }
+}

@@ -1,0 +1,66 @@
+@import '../../../../SCSS/Animations';
+@import '../../../../SCSS/Compatibilities';
+@import '../../../../SCSS/Positions';
+@import '../../../../SCSS/Sizes';
+@import '../../../../SCSS/Colors';
+#homepage{
+    .exam-details{
+        @include transition(opacity, 1s, ease);
+        svg{
+            width: 400px;
+            fill:transparent;
+            stroke:green;
+            stroke-width: 8px;
+            stroke-miterlimit:10;
+            &:nth-of-type(1){@include absolutePosition(20%, none, none, 13%, 0, 0); rotate: y 180deg;}
+            &:nth-of-type(2){@include absolutePosition(25%, none, none, 57%, 0, 0);}
+            &:nth-of-type(3){@include absolutePosition(none, none, 25%, 11%, 0, 0); rotate: y 180deg;}
+            &:nth-of-type(4){@include absolutePosition(none, none, 15%, 55%, 0, 0);}
+        }
+        .infos{
+            color: white;
+            &:nth-of-type(1){@include absolutePosition(15%, none, none, 15%, 0, 0);}
+            &:nth-of-type(2){@include absolutePosition(20%, none, none, 65%, 0, 0);}
+            &:nth-of-type(3){@include absolutePosition(none, none, 18%, 13%, 0, 0);}
+            &:nth-of-type(4){@include absolutePosition(none, none, 8%, 80%, 0, 0);}
+            span{
+                color: $primary;
+                font-size: 2rem;
+                font-weight: 600;
+            }
+        }
+    }
+    .title{
+        width: 100%;
+        text-align: center;
+        color: white;
+        h1{
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        p{
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+    }
+    .start{
+        @include absoluteCentered();
+        @include border-radius(50%);
+        @include flexCentered(column);
+        @include transition(opacity, .5s, ease);
+        width: 50vh;
+        height: 50vh;
+        background-color: black;
+        opacity: 0;
+        &:hover{
+            opacity: 1;
+        }
+        a{
+            color: $primary;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+    }
+}

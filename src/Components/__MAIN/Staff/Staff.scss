@@ -1,0 +1,99 @@
+@import '../../../SCSS/Animations';
+@import '../../../SCSS/Compatibilities';
+@import '../../../SCSS/Positions';
+@import '../../../SCSS/Sizes';
+@import '../../../SCSS/Colors';
+
+#staff{
+    .main-logo{
+        @include absolutePosition(70%, none, none, -35vh, 0, 0);
+        width: 70vh;
+        height: 70vh;
+    }
+    .exam-list{
+        width: calc(100% - 300px);
+        list-style: none;
+        margin: 0;
+        padding: 10px;
+        li{
+            @include transition(all, 1s, ease);
+            @include border-radius(5px);
+            width: 100%;
+            margin-left: -110%;
+            padding: 10px;
+            border: 1px solid $primary;
+            margin-bottom: 1rem;
+            span{
+                display: inline-block;
+                width: calc(100% / 6);
+                color: white;
+                text-align: center;
+                a{
+                    color: $primary;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .side-bar{
+        @include transition(all, 1s, ease);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background-color: rgb(29, 29, 29);
+        color: white;
+        padding: 1rem;
+        ul{
+            width: 100%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .staff-info{
+            @include border-radius(5px);
+            display: flex;
+            width: 100%;
+            height: 30vh;
+            border: 1px solid $primary;
+            padding: 10px;
+            .info{
+                width: 58%;
+                height: 98%;
+                margin: 1%;
+            }
+            .picture{
+                width: 38%;
+                height: 98%;
+                margin: 1%;
+                img{
+                    @include border-radius(50%);
+                    width: 100%;
+                }
+            }
+        }
+        .batch-list{
+            @include flexCentered(column);
+            margin-top: 3rem;
+            li{
+                @include border-radius(5px);
+                width: 250px;
+                border: 1px solid $primary;
+                text-align: center;
+                padding: 0.5rem 1rem;
+                margin-bottom: 1rem;
+                cursor: pointer;
+                text-transform: uppercase;
+                font-weight: 600;
+                &:hover{
+                    background-color: $primary;
+                    color: black;
+                }
+            }
+        }
+    }
+}

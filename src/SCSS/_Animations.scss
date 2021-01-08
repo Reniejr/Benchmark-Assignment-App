@@ -1,0 +1,52 @@
+//ROTATION
+@keyframes rotate{
+    0%{}
+    100%{rotate: -360deg;}
+}
+@mixin rotation($duration, $iteration, $style) {
+    animation: rotate $duration $style $iteration;
+    -webkit-animation: rotate $duration $style $iteration;
+}
+
+//CIRCLE RAY
+@keyframes circle-ray{
+    0% {}
+    50% {
+      border: rgb(57, 206, 57) 1px solid;
+      box-shadow: 0px 0px 40px rgb(57, 206, 57);
+      transition: border 0.5s ease, box-shadow 0.5s ease;
+    }
+    100% {}
+}
+@mixin circleRay($delay){
+    animation: circle-ray 1.8s $delay infinite;
+    -webkit-animation: circle-ray 1.8s $delay infinite;
+}
+
+//LEVITATE
+@keyframes levitate{
+    0%{}
+    100%{margin-bottom: 102vh;}
+}
+
+//LOGO BALLS
+@mixin logoBalls($duration, $delay){
+    animation: levitate $duration $delay infinite;
+    -webkit-animation: levitate $duration $delay infinite;
+}
+
+//TYPEWRITE
+@keyframes typing{
+    0%{width: 0;}
+    100%{width: 100%;}
+}
+@mixin typer() {
+    animation: typing 3.5s steps(40, end);
+    -webkit-animation: typing 3.5s steps(40, end);
+}
+
+//SLIDE FROM LEFT
+@mixin slideFromLeft($delay){
+    margin-left: 0;
+    transition-delay: $delay;
+}
