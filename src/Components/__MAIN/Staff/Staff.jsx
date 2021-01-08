@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {Modal} from 'react-bootstrap'
 
 //UTILITIES
-import {getExams, postExam} from '../../../UTILITIES/Fetch/Fetch'
+import {getExams, postExam, getUser} from '../../../UTILITIES/Fetch/Fetch'
 
 //STYLE
 import './Staff.scss'
@@ -21,7 +21,13 @@ export default class Staff extends PureComponent {
             name: '',
             quantity: ''
         },
-        showModal: false
+        showModal: false,
+        user:{}
+    }
+
+    getUser = async (id) => {
+        let result = await getUser(process.env.REACT_APP_SERVER_OFFLINE+'user/', id)
+        this.setState({user: result})
     }
 
     showExams(){
@@ -55,6 +61,8 @@ export default class Staff extends PureComponent {
     }
 
     componentDidMount = async () => {
+        let id = this.props.match.params.userId
+        this.getUser(id)
         setTimeout(() => {
             this.setState({sideBar : true})
         }, 500);
@@ -92,9 +100,9 @@ export default class Staff extends PureComponent {
                     <div className="staff-info">
                         <div className="info">
                             <ul>
-                                <li>Name</li>
-                                <li>Lastname</li>
-                                <li>Role</li>
+                                <li>{this.state.user.name}</li>
+                                <li>{this.state.user.lastName}</li>
+                                <li>{this.state.user.role}</li>
                             </ul>
                         </div>
                         <div className="picture">

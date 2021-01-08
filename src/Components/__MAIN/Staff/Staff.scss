@@ -119,6 +119,12 @@
                 width: 58%;
                 height: 98%;
                 margin: 1%;
+                ul{
+                    li{
+                        font-weight: 600;
+                        color: $primary;
+                    }
+                }
             }
             .picture{
                 width: 38%;

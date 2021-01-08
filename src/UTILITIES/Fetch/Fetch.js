@@ -47,3 +47,11 @@ export const postAnswer = async (baseUrl, id, quest, answer) => {
     console.log(result)
     return result
 }
+
+//GET USER
+export const getUser = async (baseUrl, id) => {
+    let response = await fetch(baseUrl+id)
+    let result = await response.json()
+    console.log(result)
+    return result
+}

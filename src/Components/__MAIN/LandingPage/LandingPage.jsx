@@ -66,7 +66,7 @@ export default class LandingPage extends PureComponent {
                     <input type="password" id='password' onChange={this.fillForm} placeholder='Password / Token'/>
                     {
                         this.state.user === 'staff'
-                        ? <Link to={`/${this.state.credentials.name}`}>Confirm</Link>
+                        ? <Link to={`/${this.state.credentials.password}`}>Confirm</Link>
                         : <Link to={`/exam/${this.state.credentials.password}`}>Confirm</Link>
                     }
                     
