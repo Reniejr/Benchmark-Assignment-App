@@ -8,6 +8,21 @@ export const getExams = async (baseUrl, id) => {
     return result
 }
 
+//POST EXAM
+export const postExam = async (baseUrl, body) => {
+    let response = await fetch(baseUrl, {
+        method:'POST',
+        body: JSON.stringify(body),
+        headers: new Headers({
+            'Content-Type' : 'application/json'
+        })
+    })
+    let result = await response.json()
+    console.log(result)
+    return result
+}
+
+
 //GET QUEST
 export const getQuest = async (baseUrl, id, index) => {
     let url = `${baseUrl}${id}`

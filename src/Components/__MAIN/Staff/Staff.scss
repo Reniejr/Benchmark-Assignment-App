@@ -10,6 +10,46 @@
         width: 70vh;
         height: 70vh;
     }
+    .modal-content{
+        position: absolute;
+        background-color: #1d1d1d;
+        color: $primary;
+        border: 1px solid $primary;
+        z-index: 1000;
+        .modal-header{
+            text-align: center;
+            border-color: $primary;
+            button{
+                color: $primary;
+                font-weight: 700;
+                background-color: transparent;
+                border: none;
+            }
+        }
+        .modal-body{
+            @include flexCentered(column);
+            input{
+                @include border-radius(5px);
+                background-color: black;
+                margin-bottom: 2rem;
+                border: 1px solid $primary;
+                color: white;
+            }
+            button{
+                background-color: $primary;
+                color: black;
+                @include border-radius(5px);
+                border: 1px solid $primary;
+                padding: .5rem 1rem;
+                font-weight: 600;
+                &:hover{
+                    background-color: black;
+                    color: $primary;
+                }
+                
+            }
+        }
+    }
     .exam-list{
         width: calc(100% - 300px);
         list-style: none;
@@ -23,6 +63,7 @@
             padding: 10px;
             border: 1px solid $primary;
             margin-bottom: 1rem;
+            background-color: black;
             span{
                 display: inline-block;
                 width: calc(100% / 6);
@@ -32,6 +73,19 @@
                     color: $primary;
                     text-decoration: none;
                 }
+            }
+        }
+        button{
+            @include border-radius(5px);
+            color: $primary;
+            font-weight: 700;
+            background-color: transparent;
+            border: 1px solid $primary;
+            margin-bottom: 1rem;
+            padding: .5rem 1rem;
+            &:hover{
+                background-color:$primary;
+                color: black;
             }
         }
     }

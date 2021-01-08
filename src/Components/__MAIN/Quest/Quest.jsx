@@ -57,9 +57,16 @@ export default class Quest extends PureComponent {
         ? this.setState({quest : null})
         : await this.getQuest()
         this.timer(this.state.duration)
+        
     }
     componentDidUpdate = async (prevProps, prevState) => {
-        if (prevState.duration !== this.state.duration && prevState.quest !== this.state.quest) {}
+        if (prevState.duration !== this.state.duration && prevState.quest !== this.state.quest) {
+            if (this.state.duration === 0) {
+                let randomNumber = Math.floor(Math.random()*4)
+                this.answer(randomNumber)
+                await this.props.history.push(`/exam/${this.props.match.params.examId}/quest/${parseInt(this.props.match.params.questIndex) +1}`)
+            } 
+        }
         if (this.props.match.params.questIndex > 4) {
             let id = this.props.match.params.examId
             let questIndex = '4'
@@ -78,7 +85,9 @@ export default class Quest extends PureComponent {
                 {this.state.quest !== null
                     ? <div className="question-block">
                             <h1>Question n {parseInt(questIndex) +1}</h1>
-                            <p>{this.state.duration? this.state.duration : 0}</p>
+                            <div className='timer'>
+                                <p>{this.state.duration? this.state.duration : 0}</p>
+                            </div>
                             <p className='question'>{this.state.quest.text}</p>
                             {this.state.answersList
                                 ? this.state.answersList.map( (answer, index) => {

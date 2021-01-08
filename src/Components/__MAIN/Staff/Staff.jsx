@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
 import {Link} from 'react-router-dom'
+import {Modal} from 'react-bootstrap'
 
 //UTILITIES
-import {getExams} from '../../../UTILITIES/Fetch/Fetch'
+import {getExams, postExam} from '../../../UTILITIES/Fetch/Fetch'
 
 //STYLE
 import './Staff.scss'
@@ -14,7 +15,13 @@ export default class Staff extends PureComponent {
     state={
         showExams : false,
         sideBar : false,
-        exams:[]
+        exams:[],
+        newExam : {
+            candidateName : '',
+            name: '',
+            quantity: ''
+        },
+        showModal: false
     }
 
     showExams(){
@@ -29,6 +36,24 @@ export default class Staff extends PureComponent {
         })
     }
 
+    fillForm = (e) => {
+        let newExam = {...this.state.newExam},
+            currentId = e.currentTarget.id
+        newExam[currentId] = e.currentTarget.value
+        this.setState({newExam : newExam})
+    }
+
+    showModal(){
+        this.setState({showModal : !this.state.showModal})
+    }
+
+    postExam = async () => {
+        await postExam(process.env.REACT_APP_SERVER_OFFLINE, this.state.newExam)
+        let exams = await getExams(process.env.REACT_APP_SERVER_OFFLINE)
+        await this.setState({exams : exams})
+        await this.setState({showModal : !this.state.showModal})
+    }
+
     componentDidMount = async () => {
         setTimeout(() => {
             this.setState({sideBar : true})
@@ -37,10 +62,32 @@ export default class Staff extends PureComponent {
         this.setState({exams : exams})
     }
 
+    componentDidUpdate = (prevProps, prevState) =>{
+        if (prevState.exams !== this.state.exams) {
+            
+        }
+    }
+
     render() {
         return (
             <div id='staff'>
                 <Layout/>
+                <Modal.Dialog style={{display : this.state.showModal? 'block' : 'none'}}>
+                    <Modal.Header >
+                        <Modal.Title>Add Exam </Modal.Title>
+                        <button onClick={()=>this.showModal()}>x</button>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <label htmlFor="candidateName">Name</label>
+                        <input type="text" id='candidateName' placeholder='Name' onChange={this.fillForm}/>
+                        <label htmlFor="name">Type</label>
+                        <input type="text" id='name' placeholder='Type' onChange={this.fillForm}/>
+                        <label htmlFor="quantity">Questions</label>
+                        <input type="number" id='quantity' onChange={this.fillForm}/>
+                        <button onClick={()=>this.postExam()}>Create New Exam</button>
+                    </Modal.Body>
+                </Modal.Dialog>
                 <nav className='side-bar' style={{right: this.state.sideBar? '0' : ''}}>
                     <div className="staff-info">
                         <div className="info">
@@ -62,6 +109,7 @@ export default class Staff extends PureComponent {
                     </ul>
                 </nav>
                 <ul className='exam-list'>
+                    <button onClick={()=>this.showModal()}>Add Exam</button>
                     {this.state.exams.map(exam => {
                         return(
                             <li className='exam' key={exam.id}>
@@ -74,6 +122,7 @@ export default class Staff extends PureComponent {
                             </li>
                         )
                     })}
+
                 </ul>
             </div>
         )
